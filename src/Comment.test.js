@@ -13,5 +13,6 @@ describe('<Comment />', () => {
   it('should have .card class', () => {
     const wrapper = shallow(<Comment comment={comment} />)
     expect(wrapper.is('.card')).toBe(true)
+    expect(wrapper.text()).toBe(comment.comment)
   })
 })

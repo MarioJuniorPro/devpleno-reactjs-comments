@@ -11,9 +11,9 @@ class Comments extends Component {
 
   render() {
     return (
-      <div>
-        { Object.keys(this.props.comments).map(key => this.renderComment(key, this.props.comments[key]))}
-      </div>
+      <ul className="list-unstyled">
+        { Object.keys(this.props.comments).reverse().map(key => this.renderComment(key, this.props.comments[key]))}
+      </ul>
     )
   }
 }

@@ -8,11 +8,13 @@ const styles = {
   }
 
 const Comment = props => (
-  <div className="card" style={styles.comment}>
-    <div className="card-body">
-      {props.comment.comment}
+  <li className="media">
+    <img className="mr-3 rounded-circle" src={props.comment.user.photoURL} alt={props.comment.user.displayName}/>
+    <div className="media-body">
+      <h5 className="mt-0 mb-1">{props.comment.user.displayName}</h5>
+            {props.comment.comment}
     </div>
-  </div>
+  </li>
   )
 
 export default Comment;
