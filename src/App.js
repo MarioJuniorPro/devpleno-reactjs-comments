@@ -4,6 +4,8 @@ import 'bootstrap-css-only'
 import NewComment from './NewComment'
 import Comments from './Comments'
 
+import Base from './base'
+
 ////https://multitest-api.firebaseio.com/
 class App extends Component {
   constructor(props) {
@@ -11,14 +13,13 @@ class App extends Component {
   
     this.state = {
        comments: {
-         '1': {
-          comment: 'comentário 1'
-         },
-         '2': {
-          comment: 'comentário 2'
-         }
        }
     }
+
+    this.refComments = Base.syncState('comments', {
+      context: this,
+      state: 'comments'
+    })
   }
   
   postNewComment(comment){
@@ -35,7 +36,7 @@ class App extends Component {
     return (
       <React.Fragment>
         <nav className="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0">
-          <a className="navbar-brand col-sm-3 col-md-2 mr-0" href="#">Welcome</a>
+          <a className="navbar-brand col-sm-3 col-md-2 mr-0" href="">Welcome</a>
         </nav>
         <div className="container-fluid">
           <NewComment postNewComment={this.postNewComment.bind(this)}/>

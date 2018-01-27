@@ -1,12 +1,6 @@
 import React, { Component } from 'react'
 
 export default class NewComment extends Component {
-
-    constructor(props) {
-      super(props)
-    }
-    
-
     handleEnter(e){
         if(e.key === 'Enter'){
             this.props.postNewComment({
