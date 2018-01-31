@@ -5,10 +5,12 @@ import Comments from './Comments'
 describe('<Comments />', () => {
   const comments = {
     1: {
-      comment: 'test'
+      comment: 'test',
+      user: { displayName: 'Tester', photoURL: 'http://placer.it' }
     },
     2: {
-      comment: 'test 2'
+      comment: 'test 2',
+      user: { displayName: 'Tester', photoURL: 'http://placer.it' }
     }
   }
   it('render without crashing', () => {

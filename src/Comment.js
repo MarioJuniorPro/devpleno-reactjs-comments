@@ -1,11 +1,5 @@
 import React from 'react'
-
-const styles = {
-    comment: {
-      marginTop: 10,
-      marginBottom: 10
-    }
-  }
+import PropTypes from 'prop-types';
 
 const Comment = props => (
   <li className="media">
@@ -17,7 +11,12 @@ const Comment = props => (
   </li>
   )
 
+Comment.propTypes = {
+  comment: PropTypes.object.isRequired
+}
+
 export default Comment;
+
 
 
 // class Comment extends Component {

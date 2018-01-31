@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import 'bootstrap-css-only'
 
 import NewComment from './NewComment'
@@ -19,7 +20,9 @@ class App extends Component {
       context: this,
       state: 'comments'
     })
+  }
 
+  componentDidMount(){
     this.props.auth.onAuthStateChanged((user)=>{
       if(user){
         this.setState({ isLoggedIn: true, user })
@@ -30,7 +33,6 @@ class App extends Component {
   }
   
   postNewComment(comment){
-
     const {displayName, photoURL, uid} = this.state.user
     comment.user = { uid, displayName, photoURL}
     const comments = { ...this.state.comments }
@@ -43,10 +45,9 @@ class App extends Component {
   }
 
   auth(provider){
-    console.log(provider)
     this.props.auth.signInWithPopup(this.props.providers[provider])
       .then((user) => {
-        // this.setState({ isLoggedIn: true, user })
+        this.setState({ isLoggedIn: true, user })
       })
       .catch(err => console.log(err))
   }
@@ -74,5 +75,12 @@ class App extends Component {
     );
   }
 }
+
+App.propTypes = {
+  base: PropTypes.any.isRequired,
+  providers: PropTypes.any.isRequired,
+  auth: PropTypes.any.isRequired
+}
+
 
 export default App;
